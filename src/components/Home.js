@@ -37,6 +37,7 @@ export default class Home extends React.Component {
       .then(json => {
         this.setState({
           temperature: json.main.temp,
+          description: json.weather[0].description,
           weatherCondition: json.weather[0].main,
           locality: json.name,
           isLoading: false
@@ -45,12 +46,17 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const { isLoading, weatherCondition, temperature, locality } = this.state;
+    const { isLoading, weatherCondition, temperature, locality, description } = this.state;
     return (
       <View style={styles.container}>
         {isLoading 
           ? <Text>Fetching The Weather</Text> 
-          : <Weather weather={weatherCondition} temperature={temperature} locality={locality} />}
+          : <Weather 
+              weather={weatherCondition} 
+              temperature={temperature} 
+              locality={locality} 
+              description={description}
+          />}
       </View>
     );
   }
