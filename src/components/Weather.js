@@ -2,10 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Weather = ({ weather, temperature, locality, description }) => (
-  <View style={styles.weatherContainer}>
+const Weather = ({ weather, temperature, locality, description, icon, bgColor }) => (
+  <View style={{ flex: 1, backgroundColor: bgColor }}>
     <View style={styles.headerContainer}>
-      <Icon size={48} name="weather-pouring" color={'#fff'} />
+      <Icon size={80} name={icon} color={'#fff'} />
       <Text style={styles.tempText}>{temperature}˚</Text>
     </View>
     <View style={styles.bodyContainer}>
@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
   headerContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: 20
   },
   tempText: {
     fontSize: 48,
